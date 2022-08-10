@@ -2,13 +2,7 @@ let express = require('express');
 let router = express.Router();
 const fs = require('fs');
 router.get('/hi',(req,res)=>{
-// sassDb.collection("users").findOne({},(err,result)=>{
-// if(err){
-// console.log(err);
-// res.send({'res':err})
-// }
-// res.send({'name':'Dhee','re':result});
-// })
+
 
 sassDb.collection("users").find({}).toArray((err,result)=>{
 
@@ -29,19 +23,14 @@ res.send({'result':result})
 
 router.post('/lk',async (req,res)=>{
 console.log(req.files);
+
+if(req.files &&  req.files.length>0){
 let query = {};
 query.name = req.body.name;
 query.age = req.body.age;
-
 let file = req.files;
-
 console.log(file[0].buffer.toString());
 const fileContents = Buffer.from(file[0].buffer, 'base64');
-
-// fs.readFile('./'+file[0].path,(err,data)=>{
-// console.trace(data);
-// fs.writeFileSync(pathfile,fileContents);
-
 let filesArr = [];
 
 for(let i of file){
@@ -67,7 +56,16 @@ res.send('success');
 
 }
 
+
+
+
 })
+
+
+}else{
+
+res.send('success');
+}
 
 
 })

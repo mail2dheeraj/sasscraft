@@ -11,41 +11,66 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
+<style>
+
+.font-26{
+font-size: 26px;
+}
+
+.container-block{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+</style>
+
 
 
 </head>
 
-<body>
+<body class="bg-info h-100 container-block ">
 
-
+<div  class="w-75">
 <div>
 
-<input id="name" type="text" />
-
+<!-- <input id="name" type="text" /> -->
+<label for="name" class="form-label font-26">Name</label>
+<input class="form-control" list="datalistOptions" id="name" placeholder="Type to search...">
 </div>
 
 <div>
 
-<input id="age" type="number" />
-
+<!-- <input id="age" type="number" /> -->
+<label for="age" class="form-label font-26">age</label>
+<input class="form-control"  id="age" placeholder="Type to search...">
 </div>
+
+
+
+<!-- <input id="profilePic" type="file" /> -->
+<div class="mb-3">
+  <label for="profilePic" class="form-label font-26">profile pic</label>
+  <input class="form-control" id="profilePic" type="file" >
+</div>
+
+
+<!-- <img src="../views/profiles/Screenshot (3) - Copy.png" /> -->
+<!-- <input id="resume" type="file" /> -->
+<div>
+<div class="mb-3">
+  <label for="resume" class="form-label font-26">resume</label>
+  <input class="form-control" id="resume" type="file" >
+</div>
+</div>
+
 <div>
 
-<input id="profilePic" type="file" />
-
+<!-- <button onclick="updateDetails()">Upload</button> -->
+<button type="button" onclick="updateDetails()" class="btn btn-primary">submit</button>
 </div>
-<div>
-
-<input id="resume" type="file" />
-
 </div>
-
-<div>
-
-<button onclick="updateDetails()">Upload</button>
-
-</div>
-
 <script>
 
 function updateDetails(){
@@ -77,6 +102,7 @@ cache: false,
        
 success:(result)=>{
 console.log(result);
+window.location.href = 'http://localhost:8081/hi'
 },
 error:(er)=>{
 console.log(er);
